@@ -1,6 +1,6 @@
 <template>
   <div class="c-games">
-    <v-container class="grey darken-4" fluid>
+    <v-container class="grey darken-4 mb-4" fluid>
       <v-row>
         <v-col class="text-center mt-6">
           <h1>Sport Scoreboard</h1>
@@ -9,7 +9,7 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col>
+        <v-col cols="12" md="6" class="pb-0">
           <v-select
             v-model="sport"
             :items="leagues"
@@ -17,7 +17,7 @@
             outlined
           ></v-select>
         </v-col>
-        <v-col>
+        <v-col cols="12" md="6" class="pb-0">
           <v-btn
             color="primary"
             block
@@ -104,3 +104,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.v-text-field__details {
+  display: none !important;
+}
+</style>
