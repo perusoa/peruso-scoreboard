@@ -2,9 +2,13 @@
   <div class="c-games">
     <v-container class="grey darken-4" fluid>
       <v-row>
-        <v-col>
-          
+        <v-col class="text-center mt-6">
+          <h1>Sport Scoreboard</h1>
+          <h4>By: Anthony Peruso</h4>
+          <p class="mt-3">This is a simple scoreboard that allows you to see a specific American sport league by date using the free ESPN API. In progress games will have a green progress bar displayed. Enjoy!</p>
         </v-col>
+      </v-row>
+      <v-row>
         <v-col>
           <v-select
             v-model="sport"
@@ -12,6 +16,15 @@
             label="Leagues"
             outlined
           ></v-select>
+        </v-col>
+        <v-col>
+          <v-btn
+            color="primary"
+            block
+            x-large
+            @click="getGames">
+            Refresh Games
+          </v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -41,14 +54,14 @@ import DateControls from '../components/DateControls';
 import GameCard from '../components/GameCard';
 
 export default {
-  name: 'Baseball',
+  name: 'Games',
   components: {
     DateControls,
     GameCard
   },
   data () {
     return {
-      sport: 'baseball',
+      sport: 'football',
       leagues: [
         {
           text: 'MLB',
@@ -78,10 +91,9 @@ export default {
     }
   },
   methods: {
-    async getGames (date) {
+    async getGames () {
       await this.$store.dispatch('getGames', {
-        sport: this.sport,
-        date: date || null
+        sport: this.sport
       });
     }
   },

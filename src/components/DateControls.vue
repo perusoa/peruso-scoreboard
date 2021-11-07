@@ -27,10 +27,16 @@ export default {
   methods: {
     nextDay () {
       this.date = this.date.add(1, 'day');
+      this.$store.commit('setDate', {
+        date: this.date
+      });
       this.$emit('date-change', this.date);
     },
     previousDay () {
       this.date = this.date.subtract(1, 'day');
+      this.$store.commit('setDate', {
+        date: this.date
+      });
       this.$emit('date-change', this.date);
     }
   }
